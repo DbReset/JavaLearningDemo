@@ -7,6 +7,7 @@ import java.util.Arrays;
 import static com.luoyj.algorithm.BiSearch.BiSearchDemo;
 import static com.luoyj.algorithm.BubbleSort1.bubbleSortDemo;
 import static com.luoyj.algorithm.InsertSort.InsertSort;
+import static com.luoyj.algorithm.ShellSort.ShellSort;
 import static com.luoyj.algorithm.quicksort.sortMeth;
 
 public class myAlgorithmTest {
@@ -44,6 +45,15 @@ public class myAlgorithmTest {
     public void QuickSortTest() {
         int[] a= {10,4,14,34,33,1,2,35,18,49};
         sortMeth(a);
+        System.out.println(Arrays.toString(a));
+        // quickSort(a,0,a.length-1);
+    }
+
+
+    @Test
+    public void ShellSortTest() {
+        int[] a= {10,4,14,34,33,1,2,35,18,49};
+        a = ShellSort(a);
         System.out.println(Arrays.toString(a));
         // quickSort(a,0,a.length-1);
     }
