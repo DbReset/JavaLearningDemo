@@ -6,6 +6,7 @@ import java.util.Arrays;
 
 import static com.luoyj.algorithm.BiSearch.BiSearchDemo;
 import static com.luoyj.algorithm.BubbleSort1.bubbleSortDemo;
+import static com.luoyj.algorithm.Greed.ChangeMoney;
 import static com.luoyj.algorithm.InsertSort.InsertSort;
 import static com.luoyj.algorithm.ShellSort.ShellSort;
 import static com.luoyj.algorithm.quicksort.sortMeth;
@@ -24,7 +25,7 @@ public class myAlgorithmTest {
     @Test
     public void BubbleSort1Test() {
         int[] a = {3, 95, 25, 52, 67, 12};
-        a = bubbleSortDemo(a);
+        bubbleSortDemo(a);
         System.out.println(Arrays.toString(a));
     }
 
@@ -53,8 +54,15 @@ public class myAlgorithmTest {
     @Test
     public void ShellSortTest() {
         int[] a= {10,4,14,34,33,1,2,35,18,49};
-        a = ShellSort(a);
+        ShellSort(a);
         System.out.println(Arrays.toString(a));
         // quickSort(a,0,a.length-1);
     }
+
+    @Test
+    public void GreedTest() {
+        ChangeMoney(895);
+
+    }
 }
+
