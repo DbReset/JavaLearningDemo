@@ -1,46 +1,38 @@
 package com.luoyj.basic.threadtest;
 
-public class testSynchronized {
+//vamei多线程教程   https://www.cnblogs.com/vamei/archive/2013/04/15/3000898.html
 
-
-    public static void testDemo() throws InterruptedException {
+public class testSynchronized
+{
+    public static void main(String[] args)
+    {
         Reservoir r = new Reservoir(100);
         Booth b1 = new Booth(r);
         Booth b2 = new Booth(r);
         Booth b3 = new Booth(r);
-/*           main.java.com.luoyj.threadtest.Booth b4 = new main.java.com.luoyj.threadtest.Booth(r);
-            main.java.com.luoyj.threadtest.Booth b5 = new main.java.com.luoyj.threadtest.Booth(r);
-            main.java.com.luoyj.threadtest.Booth b6 = new main.java.com.luoyj.threadtest.Booth(r);*/
-
-        b1.join();
-        b2.join();
-        b3.join();
-/*           String s  =  b3.toString();
-            System.out.println(s);*/
     }
-
-
 }
 
-/**
- * contain shared resource
- */
+/** * contain shared resource */
 class Reservoir {
     private int total;
 
-    public Reservoir(int t) {
+    public Reservoir(int t)
+    {
         this.total = t;
     }
 
     /**
-     * Thread safe method
-     * serialized access to main.java.com.luoyj.threadtest.Booth.total
+     * Thread safe method 线程安全方法  通过synchronized关键字进行控制
+     * serialized access to Booth.total
      */
-    public boolean sellTicket() {
-        if (this.total > 0) {
+    public synchronized boolean sellTicket()
+    {
+        if(this.total > 0) {
             this.total = this.total - 1;
             return true; // successfully sell one
-        } else {
+        }
+        else {
             return false; // no more tickets
         }
     }
@@ -54,7 +46,6 @@ class Booth extends Thread {
 
     private Reservoir release;      // sell this reservoir
     private int count = 0;          // owned by this thread object
-
     /**
      * constructor
      */
@@ -62,35 +53,34 @@ class Booth extends Thread {
         super("ID:" + (++threadID));
         this.release = r;          // all threads share the same reservoir
         this.start();
-
     }
 
     /**
      * convert object to string
      */
-/*    public String toString() {
+    public String toString() {
         return super.getName();
-    }*/
+    }
 
     /**
      * what does the thread do?
      */
     public void run() {
-        while (true) {
-            if (this.release.sellTicket()) {
+        while(true) {
+            if(this.release.sellTicket()) {
                 this.count = this.count + 1;
-                System.out.println(this.getName() + ": sell 1" + "current sel:" + this.count);
+                System.out.println(this.getName() + ": sell 1");
                 try {
-                    sleep((int) Math.random() * 100);   // random intervals
-                    //TimeUnit.MILLISECONDS.sleep(10);
-                } catch (InterruptedException e) {
+                    sleep((int) Math.random()*100);   // random intervals
+                }
+                catch (InterruptedException e) {
                     throw new RuntimeException(e);
                 }
-            } else {
+            }
+            else {
                 break;
             }
         }
         System.out.println(this.getName() + " I sold:" + count);
     }
 }
-
