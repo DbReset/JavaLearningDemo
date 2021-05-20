@@ -1,4 +1,4 @@
-package com.luoyj.basic.threadtest;
+package com.luoyj.basic.threadtest.basic;
 
 /*java创建线程的4种方法：
         1.继承Thread类实现多线程

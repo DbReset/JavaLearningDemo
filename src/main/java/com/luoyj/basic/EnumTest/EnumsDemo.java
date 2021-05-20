@@ -1,4 +1,6 @@
-package com.luoyj.basic;
+package com.luoyj.basic.EnumTest;
+
+import com.luoyj.basic.EnumTest.EnumDefineTest;
 
 public class EnumsDemo {
 

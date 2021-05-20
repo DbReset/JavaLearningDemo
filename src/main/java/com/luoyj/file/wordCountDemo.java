@@ -1,8 +1,11 @@
 package com.luoyj.file;
 
 import java.io.BufferedReader;
+import java.io.FileInputStream;
 import java.io.FileReader;
 import java.io.IOException;
+import java.nio.ByteBuffer;
+import java.nio.channels.FileChannel;
 import java.util.*;
 
 public class wordCountDemo {
@@ -17,6 +20,7 @@ public class wordCountDemo {
         }
 
         char[] c = s.toString().toCharArray();
+
 
         HashMap hashmap = new HashMap();
 
@@ -34,6 +38,75 @@ public class wordCountDemo {
         return sortMap(hashmap);
     }
 
+
+
+    public static String CountWords_big_file(FileReader file) throws IOException{
+        StringBuilder s;
+        BufferedReader bufferedReader = new BufferedReader(file);
+        s = new StringBuilder(bufferedReader.readLine());
+
+        HashMap hashmap = new HashMap();
+        while (bufferedReader.ready()) {
+            char[] c = s.toString().toCharArray();
+            //s.append(bufferedReader.readLine());
+            for (char signal_c : c) {
+                Integer map_count = (Integer) hashmap.get(String.valueOf(signal_c));
+                if (map_count == null) {
+                    hashmap.put(String.valueOf(signal_c), 1);
+                } else {
+                    hashmap.put(String.valueOf(signal_c), map_count + 1);
+                }
+
+            }
+            s = new StringBuilder(bufferedReader.readLine());
+        }
+
+        char[] c = s.toString().toCharArray();
+        for (char signal_c : c) {
+            Integer map_count = (Integer) hashmap.get(String.valueOf(signal_c));
+            if (map_count == null) {
+                hashmap.put(String.valueOf(signal_c), 1);
+            } else {
+                hashmap.put(String.valueOf(signal_c), map_count + 1);
+            }
+
+        }
+
+        bufferedReader.close();
+
+        return sortMap(hashmap);
+    }
+    /*public static String CountWords(String file_path) throws IOException {
+        FileInputStream inFile = new FileInputStream(file_path);
+        FileChannel inputChannel = inFile.getChannel();
+        int buffersize = 2000;
+        ByteBuffer byteBuffer = ByteBuffer.allocate(buffersize);//申请缓存区
+        long position_end = 0l;
+        HashMap hashmap = new HashMap();
+
+        int read = inputChannel.read(byteBuffer, position_end);
+
+        readW:
+        while (read != -1) {
+            byteBuffer.flip();//切换读模式
+            byte[] array = byteBuffer.array();
+            for (byte v : array) {
+                if (v == 10 || v == 13) { //匹配/r/n
+                    position_end += 1;
+                    break readW;
+                }
+            }
+
+            byte[] tbyte = new byte[byteBuffer.limit()];
+
+
+            position_end += buffersize;
+            byteBuffer.clear(); //清空缓存块指针
+            read = inputChannel.read(byteBuffer, position_end);
+        }
+
+
+    }*/
     //基于java8的stream 返回 按value排序后的linkedhashmap
 //    public static <K extends Comparable, V extends Comparable> Map<K, V> sortMapByValues(Map<K, V> aMap) {
 //     HashMap<K, V> finalOut = new LinkedHashMap<>();

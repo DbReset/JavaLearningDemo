@@ -59,6 +59,7 @@ public class myAlgorithmTest {
         // quickSort(a,0,a.length-1);
     }
 
+    //贪心算法 找零钱
     @Test
     public void GreedTest() {
         ChangeMoney(895);

@@ -1,4 +1,4 @@
-package com.luoyj.basic.threadtest;
+package com.luoyj.basic.threadtest.basic;
 
 import java.util.concurrent.TimeUnit;
 

@@ -1,4 +1,4 @@
-package com.luoyj.basic.threadtest;
+package com.luoyj.basic.threadtest.basic;
 
 //vamei多线程教程   https://www.cnblogs.com/vamei/archive/2013/04/15/3000898.html
 

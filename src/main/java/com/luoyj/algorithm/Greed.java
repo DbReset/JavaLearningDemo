@@ -10,8 +10,9 @@ public class Greed {
 
         int[] moneybox = {100, 50, 20, 10, 5, 1};
         int[] changArray = new int[moneybox.length];
-        Arrays.sort(moneybox);
-        //  System.out.println(Arrays.toString(changArray));
+        //找最少的张数 先排个序
+        Arrays.sort(moneybox);//从小到大
+        System.out.println(Arrays.toString(moneybox));
         int change = money;
         if (money > 0) {
 
