@@ -2,7 +2,9 @@ package com.luoyj.test;
 
 import org.junit.Test;
 
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 
 import static com.luoyj.algorithm.BiSearch.BiSearchDemo;
 import static com.luoyj.algorithm.BubbleSort1.bubbleSortDemo;
@@ -65,5 +67,23 @@ public class myAlgorithmTest {
         ChangeMoney(895);
 
     }
+
+
+
+    @Test
+    public  void test111() {
+            List<String> a = null;
+            test(a);
+            System.out.println(a.size());
+    }
+
+
+    public static List<String> test(List<String> a) {
+       a = new ArrayList<String>();
+       a.add("abc");
+
+       return  a;
+    }
+
 }
 

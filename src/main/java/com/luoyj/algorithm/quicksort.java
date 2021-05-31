@@ -81,6 +81,7 @@ public class quicksort {
         // 其实 最后和quicksort实现效果一致 直接将从后到前找到的小数和从前到后找到的大数交换，然后基准值再交换到汇聚的点上，避免了一次次传递
         while (index_start < index_end) {
 
+            //从后往前找比base小的数据
             while (arr[index_end] >= baseNum && index_end > index_start) {
                 index_end--;
             }
@@ -90,7 +91,9 @@ public class quicksort {
                 arr[index_end] = arr[index_start];
                 arr[index_start] = tmp;
             }
-            while (arr[index_start] <= baseNum && index_start < index_end) {
+
+            //从前往后找 比base大的数据
+            while (arr[index_start] <= baseNum &&  index_end < index_start) {
                 index_start++;
             }
             //交换

@@ -17,15 +17,16 @@ public class permute_test {
         System.out.println("begin>>>>>>>>>low>>>"+ low + ">>>>>high>>>>>" + high);
 */
 
-        if (low >= high) {
+        if (low   >= high) {
             System.out.println("RESULT>>>>>>>>>>>>>" + new String(str));
             return;
         }
-        for (int i = low; i < high; i++) {
+        for (int i = low; i < high; i++) {//i遍历第low~high个数，str[low]所存的数值为打头的数
             //swap
-            char c = str[low];
+           /* char c = str[low];
             str[low] = str[i];
-            str[i] = c;
+            str[i] = c;*/
+            swap(str,low,i);
 /*            if ( i != low){
                 System.out.println("low>>>"+ low);
                 System.out.println("i>>>"+i);
@@ -34,14 +35,12 @@ public class permute_test {
 
             permute(str, low + 1, high);
 
-            //swap back
-            if (i != low) {
+            //swap back 为避免重复排序，每个数打头结束后都恢复初始排序,防止重复的方法很多，不止这一种
+/*            if (i != low) {
                 System.out.println("swap back_low>>>" + low);
                 System.out.println("swap back_i>>>" + i);
-            }
-            c = str[low];
-            str[low] = str[i];
-            str[i] = c;
+            }*/
+            swap(str,low,i);
         }
     }
 
@@ -50,5 +49,11 @@ public class permute_test {
     }
 
 
+    private void swap(char[] str,int index1,int index2){
+        char c = str[index1];
+        str[index1] = str[index2];
+        str[index2] = c;
+
+    }
 
 }

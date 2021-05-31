@@ -1,11 +1,8 @@
 package com.luoyj.file;
 
 import java.io.BufferedReader;
-import java.io.FileInputStream;
 import java.io.FileReader;
 import java.io.IOException;
-import java.nio.ByteBuffer;
-import java.nio.channels.FileChannel;
 import java.util.*;
 
 public class wordCountDemo {
@@ -19,20 +16,8 @@ public class wordCountDemo {
             s.append(bufferedReader.readLine());
         }
 
-        char[] c = s.toString().toCharArray();
-
-
-        HashMap hashmap = new HashMap();
-
-        for (char signal_c : c) {
-            Integer map_count = (Integer) hashmap.get(String.valueOf(signal_c));
-            if (map_count == null) {
-                hashmap.put(String.valueOf(signal_c), 1);
-            } else {
-                hashmap.put(String.valueOf(signal_c), map_count + 1);
-            }
-
-        }
+        HashMap<String,Integer> hashmap = new HashMap<>();
+        setmap(s, hashmap);
         bufferedReader.close();
 
         return sortMap(hashmap);
@@ -45,22 +30,20 @@ public class wordCountDemo {
         BufferedReader bufferedReader = new BufferedReader(file);
         s = new StringBuilder(bufferedReader.readLine());
 
-        HashMap hashmap = new HashMap();
+        HashMap<String,Integer>  hashmap = new HashMap<>();
         while (bufferedReader.ready()) {
-            char[] c = s.toString().toCharArray();
-            //s.append(bufferedReader.readLine());
-            for (char signal_c : c) {
-                Integer map_count = (Integer) hashmap.get(String.valueOf(signal_c));
-                if (map_count == null) {
-                    hashmap.put(String.valueOf(signal_c), 1);
-                } else {
-                    hashmap.put(String.valueOf(signal_c), map_count + 1);
-                }
-
-            }
+            setmap(s, hashmap);
             s = new StringBuilder(bufferedReader.readLine());
         }
 
+        setmap(s, hashmap);
+
+        bufferedReader.close();
+
+        return sortMap(hashmap);
+    }
+
+    private static void setmap(StringBuilder s, HashMap hashmap) {
         char[] c = s.toString().toCharArray();
         for (char signal_c : c) {
             Integer map_count = (Integer) hashmap.get(String.valueOf(signal_c));
@@ -71,10 +54,6 @@ public class wordCountDemo {
             }
 
         }
-
-        bufferedReader.close();
-
-        return sortMap(hashmap);
     }
     /*public static String CountWords(String file_path) throws IOException {
         FileInputStream inFile = new FileInputStream(file_path);
@@ -135,7 +114,7 @@ public class wordCountDemo {
 
         });
 
-        // 利用一次迭代，将总的字符个数算出来，赋值给count
+        // 利用一次迭代，将总的字符个数算出来，赋值给count 用于计算的百分比
         for (Iterator<Map.Entry<String, Integer>> it = list_trans.iterator(); it.hasNext(); ) {
             Map.Entry m = (Map.Entry) it.next();
             Integer value = (Integer) m.getValue();
