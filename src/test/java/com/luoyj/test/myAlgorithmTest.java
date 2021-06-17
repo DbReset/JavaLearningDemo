@@ -2,9 +2,7 @@ package com.luoyj.test;
 
 import org.junit.Test;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
+import java.util.*;
 
 import static com.luoyj.algorithm.BiSearch.BiSearchDemo;
 import static com.luoyj.algorithm.BubbleSort1.bubbleSortDemo;
@@ -69,6 +67,13 @@ public class myAlgorithmTest {
     }
 
 
+    @Test
+    public void testSet(){
+        Set<Integer> t = new HashSet();
+        t.add(0);
+        t.remove(-1);
+
+    }
 
     @Test
     public  void test111() {
@@ -84,6 +89,37 @@ public class myAlgorithmTest {
 
        return  a;
     }
+
+    @Test
+    public void Test111111(){
+        int[] stones ={2,3,4,5,6};
+        Arrays.sort(stones);
+
+        int tmpi = 0;
+
+        for(int i:stones){
+
+            tmpi = abstrctint(i,tmpi);
+
+        }
+
+       System.out.println(tmpi);
+
+
+    }
+    public int abstrctint(int a,int b){
+        int t = a -b;
+        if(t > 0){
+            return t;
+
+        }else{
+            return -t;
+        }
+    }
+
+
+
+
 
 }
 
