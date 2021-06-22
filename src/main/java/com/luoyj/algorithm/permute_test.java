@@ -1,5 +1,8 @@
 package com.luoyj.algorithm;
 
+import java.util.ArrayList;
+import java.util.HashSet;
+
 public class permute_test {
     //算法 全排列
 
@@ -12,7 +15,6 @@ public class permute_test {
 
 
     public void permute(char[] str, int low, int high) {
-
 /*
         System.out.println("begin>>>>>>>>>low>>>"+ low + ">>>>>high>>>>>" + high);
 */
@@ -21,7 +23,15 @@ public class permute_test {
             System.out.println("RESULT>>>>>>>>>>>>>" + new String(str));
             return;
         }
+
+
+        //用于标记已排过最前的数  避免输入的字符中有重复的 做重复的递归
+        HashSet<Character> tmp_flag = new HashSet<>();
         for (int i = low; i < high; i++) {//i遍历第low~high个数，str[low]所存的数值为打头的数
+            if(tmp_flag.contains(str[i])){ //剪枝
+                continue;
+            }
+            tmp_flag.add(str[i]);
             //swap
            /* char c = str[low];
             str[low] = str[i];
