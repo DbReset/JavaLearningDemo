@@ -1,4 +1,4 @@
-package com.luoyj.algorithm;
+package com.luoyj.algorithm.sort;
 
 public class InsertSort {
 

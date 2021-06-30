@@ -5,11 +5,11 @@ import org.junit.Test;
 import java.util.*;
 
 import static com.luoyj.algorithm.BiSearch.BiSearchDemo;
-import static com.luoyj.algorithm.BubbleSort1.bubbleSortDemo;
+import static com.luoyj.algorithm.sort.BubbleSort1.bubbleSortDemo;
 import static com.luoyj.algorithm.Greed.ChangeMoney;
-import static com.luoyj.algorithm.InsertSort.InsertSort;
-import static com.luoyj.algorithm.ShellSort.ShellSort;
-import static com.luoyj.algorithm.quicksort.sortMeth;
+import static com.luoyj.algorithm.sort.InsertSort.InsertSort;
+import static com.luoyj.algorithm.sort.ShellSort.ShellSort;
+import static com.luoyj.algorithm.sort.quicksort.sortMeth;
 
 public class myAlgorithmTest {
 

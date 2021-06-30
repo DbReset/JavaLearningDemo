@@ -1,10 +1,11 @@
 package com.luoyj.basic.threadtest;
 
 
+import java.util.concurrent.locks.ReentrantLock;
 
 public class RcSyncPrinterABC {
     private static final Object o = new Object();
-
+ReentrantLock l = new ReentrantLock();
 
     public static void main(String[] args) {
         new Thread(()->{
