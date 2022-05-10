@@ -2,6 +2,7 @@ package com.luoyj.algorithm;
 
 public class ShieldNum {
 
+    //如对公账户需要在生成账号的时候屏蔽4，跳号生成
     //屏蔽输入的数字中的相关关键数字  输出屏蔽后比原值大的最小值
 
     public static  Long ShieldNum(Long InputLong,String ShieldKey){
