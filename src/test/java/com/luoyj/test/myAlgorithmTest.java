@@ -1,5 +1,6 @@
 package com.luoyj.test;
 
+import com.luoyj.algorithm.ShieldNum;
 import org.junit.Test;
 
 import java.util.*;
@@ -118,8 +119,24 @@ public class myAlgorithmTest {
     }
 
 
+    @Test
+    public void TestNum(){
+
+        Long t = 499999l;
+        Long Traget = ShieldNum.ShieldNum2(t,"9");
+
+        System.out.println(Traget);
 
 
+    }
+
+    @Test
+    public void TestIndex(){
+        String input = "654321";
+        int  i = input.indexOf("6");
+        System.out.println(i);
+        System.out.println(input.length());
+    }
 
 }
 
