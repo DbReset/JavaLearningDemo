@@ -8,6 +8,12 @@ public class EnumsDemo {
 
         EnumDefineTest.E_WTHR_FLG e = EnumDefineTest.E_WTHR_FLG.no;
 
-        System.out.printf(e.getID());
+       // System.out.printf(e.getID());
+
+
+        String card ="6232720800002320022";
+
+        System.out.printf(card.substring(0,5));
+
     }
 }
